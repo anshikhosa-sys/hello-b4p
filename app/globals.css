@@ -1,26 +1,73 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+/* dark palette tokens */
+@theme {
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, -apple-system, sans-serif;
+  --font-mono: ui-monospace, SFMono-Regular, Menlo, monospace;
+
+  --color-bg: #0e1116;
+  --color-surface: #161a21;
+  --color-surface-2: #1c222b;
+  --color-hover: #1b212a;
+  --color-line: #262d38;
+  --color-line-strong: #333d4c;
+
+  --color-ink: #e7ecf3;
+  --color-muted: #9aa5b5;
+  --color-faint: #6f7b8c;
+
+  --color-accent: #6b8dff;
+  --color-accent-hover: #86a1ff;
+  --color-accent-soft: #1b2440;
+  --color-violet: #a47bff;
+
+  --color-good: #4ade9f;
+  --color-good-soft: #0f2a21;
+  --color-warn: #f5b458;
+  --color-warn-soft: #2b1f0e;
+  --color-danger: #f97066;
+  --color-danger-soft: #2d1513;
+  --color-info-soft: #1a212b;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html,
+body {
+  background: var(--color-bg);
+  color: var(--color-ink);
+  -webkit-font-smoothing: antialiased;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+.scroll-thin {
+  scrollbar-width: thin;
+  scrollbar-color: var(--color-line-strong) transparent;
+}
+
+.tnum {
+  font-variant-numeric: tabular-nums;
+}
+
+/* highlighted sentences in the coach draft */
+mark.hl {
+  color: inherit;
+  border-radius: 3px;
+  padding: 1px 2px;
+  box-decoration-break: clone;
+  -webkit-box-decoration-break: clone;
+}
+mark.hl-warn {
+  background: color-mix(in srgb, var(--color-warn) 18%, transparent);
+  border-bottom: 2px solid var(--color-warn);
+}
+mark.hl-danger {
+  background: color-mix(in srgb, var(--color-danger) 16%, transparent);
+  border-bottom: 2px solid var(--color-danger);
+}
+mark.hl-good {
+  background: color-mix(in srgb, var(--color-good) 14%, transparent);
+  border-bottom: 2px solid var(--color-good);
 }
