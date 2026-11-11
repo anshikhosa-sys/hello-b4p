@@ -1,10 +1,11 @@
 @import "tailwindcss";
 
-/* brand palette from the Blueprints presentation guidelines:
-   primary #0069f3, dark #000e3f, secondary #0035a2, light #cbdbff, accent #373c82 */
+/* brand palette from the Blueprints presentation guidelines, which matches the logo:
+   primary #0069f3, dark #000e3f, secondary #0035a2, light #cbdbff, accent #373c82.
+   fonts follow the website: Poppins body, Playfair Display headings */
 @theme {
-  --font-sans: Calibri, Carlito, var(--font-inter), ui-sans-serif, system-ui, -apple-system, sans-serif;
-  --font-serif: Georgia, "Times New Roman", serif;
+  --font-sans: var(--font-poppins), ui-sans-serif, system-ui, -apple-system, sans-serif;
+  --font-serif: var(--font-playfair), Georgia, serif;
   --font-mono: ui-monospace, SFMono-Regular, Menlo, monospace;
 
   --color-navy: #000e3f;
@@ -43,7 +44,7 @@ body {
 }
 
 body {
-  font-size: 14px;
+  font-size: 13.5px;
   line-height: 1.5;
 }
 

@@ -1,10 +1,12 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { Playfair_Display, Poppins } from "next/font/google";
 import "./globals.css";
 import { Sidebar } from "@/components/Sidebar";
 import { TopBar } from "@/components/TopBar";
 
-const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
+// the same pair the blueprintsforpangaea.org site uses
+const poppins = Poppins({ subsets: ["latin"], weight: ["400", "500", "600", "700"], variable: "--font-poppins" });
+const playfair = Playfair_Display({ subsets: ["latin"], weight: ["600", "700"], variable: "--font-playfair" });
 
 export const metadata: Metadata = {
   title: "Blueprints Grant Finder",
@@ -13,7 +15,7 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="en" className={inter.variable}>
+    <html lang="en" className={`${poppins.variable} ${playfair.variable}`}>
       <body className="min-h-screen font-sans">
         <Sidebar />
         <TopBar />

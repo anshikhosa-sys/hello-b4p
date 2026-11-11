@@ -4,7 +4,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { LayoutDashboard, ClipboardList, Building2, Settings, type LucideIcon } from "lucide-react";
 import { cx } from "./ui";
-import { BrandMark } from "./BrandMark";
+import { BrandLogo } from "./BrandMark";
 
 type NavItem = { href: string; label: string; icon: LucideIcon; exact?: boolean };
 
@@ -37,12 +37,10 @@ export function Sidebar() {
   const path = usePathname();
   return (
     <aside className="fixed inset-y-0 left-0 z-30 flex w-[232px] flex-col bg-navy">
-      <div className="flex h-14 items-center gap-2.5 border-b border-white/10 px-4">
-        <BrandMark />
-        <div className="leading-tight">
-          <div className="font-serif text-[15px] font-bold text-white">Grant Finder</div>
-          <div className="text-[11.5px] text-light/80">Blueprints for Pangaea</div>
-        </div>
+      <BrandLogo />
+      <div className="border-b border-white/10 px-5 py-3">
+        <div className="font-serif text-[17px] font-bold text-white">Grant Finder</div>
+        <div className="text-[11.5px] text-light/75">Finance team</div>
       </div>
 
       <nav className="flex-1 px-3 py-4">

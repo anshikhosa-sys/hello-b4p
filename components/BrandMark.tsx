@@ -1,6 +1,10 @@
-// placeholder mark until the official Blueprints logo file is added under public/
-export function BrandMark() {
+import Image from "next/image";
+
+// official logo from blueprintsforpangaea.org, cropped. it has a white background, so it sits on a white strip
+export function BrandLogo() {
   return (
-    <div className="grid h-8 w-8 shrink-0 place-items-center rounded-[8px] bg-accent font-serif text-[13px] font-bold text-white">B</div>
+    <div className="bg-white px-5 pb-3 pt-4">
+      <Image src="/brand/b4p-logo.png" alt="Blueprints for Pangaea" width={520} height={308} priority className="h-auto w-[150px]" />
+    </div>
   );
 }
