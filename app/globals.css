@@ -1,33 +1,38 @@
 @import "tailwindcss";
 
-/* dark palette tokens */
+/* brand palette from the Blueprints presentation guidelines:
+   primary #0069f3, dark #000e3f, secondary #0035a2, light #cbdbff, accent #373c82 */
 @theme {
-  --font-sans: var(--font-inter), ui-sans-serif, system-ui, -apple-system, sans-serif;
+  --font-sans: Calibri, Carlito, var(--font-inter), ui-sans-serif, system-ui, -apple-system, sans-serif;
+  --font-serif: Georgia, "Times New Roman", serif;
   --font-mono: ui-monospace, SFMono-Regular, Menlo, monospace;
 
-  --color-bg: #0e1116;
-  --color-surface: #161a21;
-  --color-surface-2: #1c222b;
-  --color-hover: #1b212a;
-  --color-line: #262d38;
-  --color-line-strong: #333d4c;
+  --color-navy: #000e3f;
+  --color-bg: #eef3ff;
+  --color-surface: #ffffff;
+  --color-surface-2: #f3f6ff;
+  --color-hover: #f7f9ff;
+  --color-line: #dbe4f7;
+  --color-line-strong: #bccbec;
 
-  --color-ink: #e7ecf3;
-  --color-muted: #9aa5b5;
-  --color-faint: #6f7b8c;
+  --color-ink: #000e3f;
+  --color-muted: #3f4573;
+  --color-faint: #6e7598;
 
-  --color-accent: #6b8dff;
-  --color-accent-hover: #86a1ff;
-  --color-accent-soft: #1b2440;
-  --color-violet: #a47bff;
+  --color-accent: #0069f3;
+  --color-accent-hover: #0035a2;
+  --color-accent-soft: #e2ebff;
+  --color-light: #cbdbff;
+  --color-violet: #373c82;
+  --color-violet-soft: #e7e8f6;
 
-  --color-good: #4ade9f;
-  --color-good-soft: #0f2a21;
-  --color-warn: #f5b458;
-  --color-warn-soft: #2b1f0e;
-  --color-danger: #f97066;
-  --color-danger-soft: #2d1513;
-  --color-info-soft: #1a212b;
+  --color-good: #1b7f47;
+  --color-good-soft: #e3f4ea;
+  --color-warn: #a85800;
+  --color-warn-soft: #fdf1e1;
+  --color-danger: #c62f2f;
+  --color-danger-soft: #fce9e9;
+  --color-info-soft: #edf1fb;
 }
 
 html,

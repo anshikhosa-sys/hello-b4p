@@ -3,11 +3,11 @@
 export type Member = { id: string; name: string; initials: string; color: string };
 
 export const team: Member[] = [
-  { id: "ansh", name: "Ansh K.", initials: "AK", color: "#6b8dff" },
-  { id: "priya", name: "Priya S.", initials: "PS", color: "#4ade9f" },
-  { id: "marcus", name: "Marcus T.", initials: "MT", color: "#f5b458" },
-  { id: "lena", name: "Lena W.", initials: "LW", color: "#a47bff" },
-  { id: "jordan", name: "Jordan P.", initials: "JP", color: "#f97066" },
+  { id: "ansh", name: "Ansh K.", initials: "AK", color: "#0069f3" },
+  { id: "priya", name: "Priya S.", initials: "PS", color: "#1b7f47" },
+  { id: "marcus", name: "Marcus T.", initials: "MT", color: "#a85800" },
+  { id: "lena", name: "Lena W.", initials: "LW", color: "#373c82" },
+  { id: "jordan", name: "Jordan P.", initials: "JP", color: "#0035a2" },
 ];
 
 export const member = (id: string) => team.find((m) => m.id === id) ?? team[0];

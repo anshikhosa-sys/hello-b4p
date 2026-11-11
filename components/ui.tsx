@@ -13,15 +13,15 @@ const toneClass: Record<Tone, string> = {
   good: "bg-good-soft text-good",
   warn: "bg-warn-soft text-warn",
   danger: "bg-danger-soft text-danger",
-  violet: "bg-[#241b3a] text-violet",
+  violet: "bg-violet-soft text-violet",
 };
 
-// small uppercase status pill
+// small status pill, sentence case per the brand guide
 export function Tag({ tone = "neutral", children, className }: { tone?: Tone; children: ReactNode; className?: string }) {
   return (
     <span
       className={cx(
-        "inline-flex items-center gap-1 whitespace-nowrap rounded-full px-2 py-[2px] text-[10.5px] font-semibold uppercase tracking-[0.04em]",
+        "inline-flex items-center gap-1 whitespace-nowrap rounded-full px-2 py-[2px] text-[11.5px] font-semibold",
         toneClass[tone],
         className,
       )}
@@ -47,7 +47,7 @@ export function Avatar({ id, size = 24, ring }: { id: string; size?: number; rin
   return (
     <span
       title={m.name}
-      className={cx("inline-grid shrink-0 place-items-center rounded-full font-semibold text-[#0b0f17]", ring && "ring-2 ring-surface")}
+      className={cx("inline-grid shrink-0 place-items-center rounded-full font-semibold text-white", ring && "ring-2 ring-surface")}
       style={{ width: size, height: size, background: m.color, fontSize: size * 0.4 }}
     >
       {m.initials}
@@ -55,8 +55,22 @@ export function Avatar({ id, size = 24, ring }: { id: string; size?: number; rin
   );
 }
 
-export function Card({ children, className }: { children: ReactNode; className?: string }) {
-  return <div className={cx("rounded-[12px] border border-line bg-surface shadow-[0_1px_2px_rgba(0,0,0,0.4)]", className)}>{children}</div>;
+const barClass = { accent: "border-t-accent", secondary: "border-t-accent-hover", violet: "border-t-violet" };
+
+// white card; `bar` adds the colored top rule used across the brand decks
+export function Card({ children, className, bar }: { children: ReactNode; className?: string; bar?: keyof typeof barClass }) {
+  return (
+    <div
+      className={cx(
+        "rounded-[12px] border border-line bg-surface",
+        bar && `border-t-[5px] ${barClass[bar]}`,
+        "shadow-[0_2px_8px_rgba(0,14,63,0.06)]",
+        className,
+      )}
+    >
+      {children}
+    </div>
+  );
 }
 
 export function SectionHead({ title, right, sub }: { title: ReactNode; right?: ReactNode; sub?: ReactNode }) {
@@ -77,7 +91,7 @@ export function scoreTone(score: number): "good" | "accent" | "warn" {
   return "warn";
 }
 
-const ringColor = { good: "#4ade9f", accent: "#6b8dff", warn: "#f5b458" };
+const ringColor = { good: "#1b7f47", accent: "#0069f3", warn: "#a85800" };
 
 export function ScoreRing({ score, size = 56, stroke = 5, label }: { score: number; size?: number; stroke?: number; label?: string }) {
   const r = (size - stroke) / 2;
@@ -86,7 +100,7 @@ export function ScoreRing({ score, size = 56, stroke = 5, label }: { score: numb
   return (
     <div className="relative shrink-0" style={{ width: size, height: size }}>
       <svg width={size} height={size} className="-rotate-90">
-        <circle cx={size / 2} cy={size / 2} r={r} fill="none" stroke="#262d38" strokeWidth={stroke} />
+        <circle cx={size / 2} cy={size / 2} r={r} fill="none" stroke="#dbe4f7" strokeWidth={stroke} />
         <circle
           cx={size / 2}
           cy={size / 2}
@@ -103,7 +117,7 @@ export function ScoreRing({ score, size = 56, stroke = 5, label }: { score: numb
           <div className="tnum font-bold tracking-[-0.02em]" style={{ fontSize: size * 0.3, color }}>
             {score}
           </div>
-          {label && <div className="mt-0.5 text-[9px] font-semibold uppercase tracking-[0.07em] text-muted">{label}</div>}
+          {label && <div className="mt-0.5 text-[10px] font-semibold text-muted">{label}</div>}
         </div>
       </div>
     </div>
@@ -124,7 +138,7 @@ export function Button({
   className?: string;
 }) {
   const v = {
-    primary: "bg-accent text-[#0b0f17] hover:bg-accent-hover border-transparent",
+    primary: "bg-accent text-white hover:bg-accent-hover border-transparent",
     secondary: "bg-surface-2 text-ink border-line-strong hover:bg-hover",
     ghost: "bg-transparent text-muted border-transparent hover:text-ink hover:bg-surface-2",
   }[variant];
@@ -150,7 +164,7 @@ export function PageHeader({ title, sub, right }: { title: string; sub?: ReactNo
   return (
     <div className="mb-5 flex items-end justify-between gap-4">
       <div>
-        <h1 className="text-[20px] font-semibold tracking-[-0.02em]">{title}</h1>
+        <h1 className="font-serif text-[28px] font-bold leading-tight text-navy">{title}</h1>
         {sub && <p className="mt-1 text-[13px] text-muted">{sub}</p>}
       </div>
       {right}

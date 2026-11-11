@@ -3,7 +3,7 @@ import { Avatar, Tag } from "./ui";
 
 export function TopBar() {
   return (
-    <header className="fixed left-[232px] right-0 top-0 z-20 flex h-14 items-center gap-4 border-b border-line bg-[#0e1116]/90 px-6 backdrop-blur">
+    <header className="fixed left-[232px] right-0 top-0 z-20 flex h-14 items-center gap-4 border-b border-line bg-surface/90 px-6 backdrop-blur">
       <div className="relative w-[420px]">
         <Search size={15} className="pointer-events-none absolute left-3 top-1/2 -translate-y-1/2 text-faint" />
         <input

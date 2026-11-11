@@ -126,7 +126,7 @@ function GrantCard({ g, rank, expanded }: { g: Grant; rank: number; expanded?: b
         <div className="mt-4 grid grid-cols-[1.2fr_1fr] gap-5 border-t border-line pt-4">
           <div>
             <div className="mb-3 flex items-center justify-between">
-              <span className="text-[11px] font-semibold uppercase tracking-[0.07em] text-faint">Score breakdown</span>
+              <span className="text-[11px] font-semibold text-faint">Score breakdown</span>
               <span className="tnum text-[12px] text-muted">
                 37 + 20 + 16 + 19 = <span className="font-semibold text-good">92</span>
               </span>
@@ -135,7 +135,7 @@ function GrantCard({ g, rank, expanded }: { g: Grant; rank: number; expanded?: b
           </div>
           <div>
             <div className="mb-3 flex items-center justify-between">
-              <span className="text-[11px] font-semibold uppercase tracking-[0.07em] text-faint">Eligibility</span>
+              <span className="text-[11px] font-semibold text-faint">Eligibility</span>
               <span className="text-[12px] text-muted">
                 <span className="font-semibold text-good">4</span> of 5 pass
               </span>
@@ -181,7 +181,7 @@ export default function DashboardPage() {
       <div className="min-w-0 flex-1">
         <div className="mb-4 flex items-end justify-between">
           <div>
-            <h1 className="text-[20px] font-semibold tracking-[-0.02em]">Matches</h1>
+            <h1 className="font-serif text-[28px] font-bold leading-tight text-navy">Matches</h1>
             <p className="mt-1 text-[13px] text-muted">
               Ranked by fit to our mission, award target and capacity · refreshed daily at 6:00 AM
             </p>
@@ -196,7 +196,7 @@ export default function DashboardPage() {
           </div>
         </div>
 
-        <div className="mb-4 flex items-center gap-3 rounded-[12px] border border-good/30 bg-gradient-to-r from-good-soft to-[#121a19] px-4 py-3">
+        <div className="mb-4 flex items-center gap-3 rounded-[12px] border border-good/30 bg-good-soft px-4 py-3">
           <div className="grid h-8 w-8 place-items-center rounded-[9px] bg-good/15 text-good">
             <Bell size={16} />
           </div>
@@ -217,7 +217,7 @@ export default function DashboardPage() {
       </div>
 
       <div className="w-[320px] shrink-0 space-y-4">
-        <Card className="p-4">
+        <Card bar="accent" className="p-4">
           <SectionHead title="Upcoming deadlines" right={<span className="text-[12px] text-faint">Next 60 days</span>} />
           <ul className="space-y-1">
             {upcomingDeadlines.map((d) => (
@@ -230,7 +230,7 @@ export default function DashboardPage() {
                 >
                   <div>
                     <div className="tnum text-[15px] font-bold">{d.days}</div>
-                    <div className="mt-0.5 text-[9px] font-semibold uppercase tracking-[0.06em] opacity-80">days</div>
+                    <div className="mt-0.5 text-[9px] font-semibold opacity-80">days</div>
                   </div>
                 </div>
                 <div className="min-w-0 flex-1">
@@ -244,7 +244,7 @@ export default function DashboardPage() {
           </ul>
         </Card>
 
-        <Card className="p-4">
+        <Card bar="violet" className="p-4">
           <SectionHead title="Applications in progress" right={<span className="tnum text-[12px] text-faint">4 active</span>} />
           <ul className="space-y-3">
             {applicationsInProgress.map((a) => (
@@ -272,7 +272,7 @@ export default function DashboardPage() {
           </ul>
         </Card>
 
-        <Card className="p-4">
+        <Card bar="secondary" className="p-4">
           <SectionHead title="This season" />
           <div className="grid grid-cols-3 gap-2 text-center">
             {[
@@ -282,7 +282,7 @@ export default function DashboardPage() {
             ].map((s) => (
               <div key={s.l} className="rounded-[9px] border border-line bg-surface-2/60 py-2.5">
                 <div className={cx("tnum text-[16px] font-semibold", s.l === "Awarded" && "text-good")}>{s.v}</div>
-                <div className="text-[10.5px] font-semibold uppercase tracking-[0.06em] text-faint">{s.l}</div>
+                <div className="text-[10.5px] font-semibold text-faint">{s.l}</div>
               </div>
             ))}
           </div>
