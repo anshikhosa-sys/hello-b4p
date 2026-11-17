@@ -1,5 +1,6 @@
 import type { ReactNode } from "react";
-import { member } from "@/lib/mock-data";
+import Link from "next/link";
+import { initials } from "@/lib/format";
 
 export function cx(...parts: (string | false | null | undefined)[]) {
   return parts.filter(Boolean).join(" ");
@@ -42,15 +43,19 @@ export function Chip({ children, tone = "neutral" }: { children: ReactNode; tone
   );
 }
 
-export function Avatar({ id, size = 24, ring }: { id: string; size?: number; ring?: boolean }) {
-  const m = member(id);
+const avatarColors = ["#0069f3", "#1b7f47", "#a85800", "#373c82", "#0035a2"];
+
+// color is picked from the name so the same person always gets the same one
+export function Avatar({ name, size = 24, ring }: { name: string; size?: number; ring?: boolean }) {
+  let h = 0;
+  for (const ch of name) h = (h * 31 + ch.charCodeAt(0)) >>> 0;
   return (
     <span
-      title={m.name}
+      title={name}
       className={cx("inline-grid shrink-0 place-items-center rounded-full font-semibold text-white", ring && "ring-2 ring-surface")}
-      style={{ width: size, height: size, background: m.color, fontSize: size * 0.4 }}
+      style={{ width: size, height: size, background: avatarColors[h % avatarColors.length], fontSize: size * 0.4 }}
     >
-      {m.initials}
+      {initials(name)}
     </span>
   );
 }
@@ -130,12 +135,18 @@ export function Button({
   size = "md",
   disabled,
   className,
+  href,
+  external,
+  title,
 }: {
   children: ReactNode;
   variant?: "primary" | "secondary" | "ghost";
   size?: "sm" | "md";
   disabled?: boolean;
   className?: string;
+  href?: string;
+  external?: boolean;
+  title?: string;
 }) {
   const v = {
     primary: "bg-accent text-white hover:bg-accent-hover border-transparent",
@@ -143,18 +154,26 @@ export function Button({
     ghost: "bg-transparent text-muted border-transparent hover:text-ink hover:bg-surface-2",
   }[variant];
   const s = size === "sm" ? "h-7 px-2.5 text-[12px]" : "h-8.5 px-3.5 text-[13px]";
+  const cls = cx(
+    "inline-flex items-center justify-center gap-1.5 rounded-[8px] border font-semibold transition-colors",
+    v,
+    s,
+    disabled && "cursor-not-allowed opacity-45 hover:bg-surface-2",
+    className,
+  );
+  if (href && !disabled) {
+    return external ? (
+      <a href={href} target="_blank" rel="noopener noreferrer" className={cls} title={title}>
+        {children}
+      </a>
+    ) : (
+      <Link href={href} className={cls} title={title}>
+        {children}
+      </Link>
+    );
+  }
   return (
-    <button
-      type="button"
-      disabled={disabled}
-      className={cx(
-        "inline-flex items-center justify-center gap-1.5 rounded-[8px] border font-semibold transition-colors",
-        v,
-        s,
-        disabled && "cursor-not-allowed opacity-45 hover:bg-surface-2",
-        className,
-      )}
-    >
+    <button type="button" disabled={disabled} className={cls} title={title}>
       {children}
     </button>
   );

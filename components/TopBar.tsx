@@ -1,5 +1,28 @@
 import { Bell, Search, ChevronDown } from "lucide-react";
+import { dataSource } from "@/lib/data";
 import { Avatar, Tag } from "./ui";
+
+// tells people whether they're looking at sample rows
+async function DataTag() {
+  const { mode, raw } = dataSource();
+  let sample: boolean;
+  try {
+    sample = await raw.hasSample();
+  } catch {
+    return (
+      <Tag tone="danger" className="border border-danger/30">
+        Database unreachable
+      </Tag>
+    );
+  }
+  if (!sample) return null;
+  return (
+    <Tag tone="warn" className="border border-warn/30">
+      <span className="h-1.5 w-1.5 rounded-full bg-warn" />
+      {mode === "builtin" ? "Sample data (built-in, no database keys)" : "Sample data"}
+    </Tag>
+  );
+}
 
 export function TopBar() {
   return (
@@ -15,10 +38,7 @@ export function TopBar() {
         </kbd>
       </div>
 
-      <Tag tone="warn" className="border border-warn/30">
-        <span className="h-1.5 w-1.5 rounded-full bg-warn" />
-        Sample data
-      </Tag>
+      <DataTag />
 
       <div className="ml-auto flex items-center gap-3">
         <button className="relative grid h-9 w-9 place-items-center rounded-[9px] text-muted hover:bg-surface-2 hover:text-ink">
@@ -27,7 +47,7 @@ export function TopBar() {
         </button>
         <div className="h-6 w-px bg-line" />
         <button className="flex items-center gap-2 rounded-[9px] py-1 pl-1 pr-2 hover:bg-surface-2">
-          <Avatar id="ansh" size={28} />
+          <Avatar name="Ansh K." size={28} />
           <div className="text-left leading-tight">
             <div className="text-[13px] font-semibold">Ansh K.</div>
             <div className="text-[11px] text-faint">Finance Lead</div>
